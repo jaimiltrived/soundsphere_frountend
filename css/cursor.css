@@ -1,0 +1,58 @@
+
+/* Custom Cursor - Single Hard Glass Style */
+html, body, a, button, input, select, textarea, .btn, .card, * {
+    cursor: none !important;
+}
+
+/* Restore default cursor logic for touch devices to avoid issues */
+@media (hover: none) and (pointer: coarse) {
+    html, body, * {
+        cursor: auto !important;
+    }
+    .cursor-dot, .cursor-outline {
+        display: none !important;
+    }
+}
+
+/* Hide the small dot */
+.cursor-dot {
+    display: none;
+}
+
+/* Main Cursor Styling */
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 2147483647; /* Maximum Z-Index */
+    pointer-events: none;
+    
+    /* Hard Glass Look */
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255, 122, 24, 0.8); /* Theme Orange Border */
+    box-shadow: 0 0 15px rgba(255, 122, 24, 0.2);
+    
+    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+/* Hover state for interactive elements */
+body.hovering .cursor-outline {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 122, 24, 0.15);
+    border-color: #ff7a18;
+    box-shadow: 0 0 20px rgba(255, 122, 24, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+/* Click effect (active) */
+body.clicking .cursor-outline {
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: rgba(255, 122, 24, 0.3);
+}

@@ -1,0 +1,227 @@
+
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 576px) {
+    .artist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .artist-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.artist-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.artist-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 138, 76, 0.05), rgba(251, 176, 59, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.artist-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 122, 24, 0.3);
+}
+
+.artist-card:hover::before {
+    opacity: 1;
+}
+
+
+.artist-grid .artist-cover-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.artist-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.artist-card:hover .artist-cover {
+    transform: scale(1.1);
+}
+
+
+.artist-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.artist-card:hover .artist-overlay {
+    opacity: 1;
+}
+
+
+.verified-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+/* Artist Info (Grid View) */
+.artist-grid .artist-info {
+    padding: 1.5rem;
+}
+
+.artist-grid .artist-main-info {
+    margin-bottom: 1rem;
+}
+
+.artist-grid .artist-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.artist-grid .artist-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.artist-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.artist-genre {
+    font-size: 14px;
+}
+
+/* ============================================
+   LIST VIEW STYLES
+============================================ */
+.artist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Artist Card (List View) */
+.artist-list .artist-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Artist Cover (List View) */
+.artist-list .artist-cover-wrapper {
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Artist Info (List View) */
+.artist-list .artist-info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+}
+
+.artist-list .artist-main-info {
+    min-width: 200px;
+    margin-bottom: 0;
+}
+
+.artist-list .artist-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 0;
+}
+
+.artist-list .artist-stats > div {
+    text-align: left;
+}
+
+.artist-list .artist-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Responsive List View */
+@media (max-width: 992px) {
+    .artist-list .artist-info {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .artist-list .artist-stats {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .artist-list .artist-card {
+        flex-direction: column;
+    }
+    
+    .artist-list .artist-cover-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+    
+    .artist-list .artist-info {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .artist-list .artist-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .artist-list .artist-main-info {
+        min-width: auto;
+        width: 100%;
+    }
+}
+

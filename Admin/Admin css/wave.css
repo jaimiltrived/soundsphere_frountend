@@ -1,0 +1,98 @@
+/* Premium Cyber Grid & Glow Background - Classy Edition */
+.wave-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: #050507; /* Deepest Dark */
+}
+
+/* The Animated Grid Pattern - Ultra Subtle */
+.wave-bg::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 80px 80px; /* Larger squares for cleaner look */
+    animation: grid-scroll 60s linear infinite; /* Slower, more elegant */
+    z-index: 1;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+}
+
+/* Subtle Noise Texture */
+.wave-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Blobs - Deeper and smoother */
+.wave-blob {
+    position: absolute;
+    filter: blur(100px); /* Softer blur */
+    opacity: 0.4; /* More subtle */
+    border-radius: 50%;
+    animation: wave-float 25s infinite ease-in-out alternate;
+    mix-blend-mode: screen;
+    will-change: transform;
+    z-index: 0;
+}
+
+/* Primary Brand Glow (Orange/Gold) */
+.wave-1 {
+    top: -10%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(255, 122, 24, 0.5) 0%, rgba(255, 122, 24, 0) 70%);
+    animation-duration: 30s;
+}
+
+/* Deep Depth Glow (Purple/Blue) */
+.wave-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(122, 0, 255, 0.4) 0%, rgba(122, 0, 255, 0) 70%);
+    animation-duration: 40s;
+    animation-direction: alternate-reverse;
+}
+
+/* Accent Highlight (Cyan/Teal) */
+.wave-3 {
+    top: 30%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.2) 0%, rgba(0, 210, 255, 0) 70%);
+    animation-duration: 35s;
+    opacity: 0.3;
+}
+
+@keyframes grid-scroll {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-40px, -40px) rotate(0deg);
+    }
+}
+
+@keyframes wave-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(20px, -20px) scale(1.05);
+    }
+}
